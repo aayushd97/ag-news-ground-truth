@@ -1,0 +1,96 @@
+============================================================ 
+1. AGREEMENT AND KAPPA (n = 30)
+                      pair  agreement  kappa 95% Wilson CI
+my_label vs official_label      0.767  0.687  0.59 to 0.88
+p1_label vs official_label      0.833  0.777  0.66 to 0.93
+p2_label vs official_label      0.833  0.777  0.66 to 0.93
+      my_label vs p1_label      0.867  0.819  0.70 to 0.95
+      my_label vs p2_label      0.833  0.777  0.66 to 0.93
+
+============================================================ 
+2. CONFUSION MATRICES (rows = official, columns = predicted)
+
+ME vs official
+          World  Sports  Business  Sci/Tech
+World         8       0         0         0
+Sports        0       8         0         0
+Business      2       0         3         2
+Sci/Tech      2       0         1         4
+Most confused (official -> predicted): [('Business', 'World', np.int64(2)), ('Business', 'Sci/Tech', np.int64(2)), ('Sci/Tech', 'World', np.int64(2))]
+              precision    recall  f1-score   support
+
+       World       0.67      1.00      0.80         8
+      Sports       1.00      1.00      1.00         8
+    Business       0.75      0.43      0.55         7
+    Sci/Tech       0.67      0.57      0.62         7
+
+    accuracy                           0.77        30
+   macro avg       0.77      0.75      0.74        30
+weighted avg       0.78      0.77      0.75        30
+
+
+AI PROMPT 1 vs official
+          World  Sports  Business  Sci/Tech
+World         8       0         0         0
+Sports        0       8         0         0
+Business      0       0         5         2
+Sci/Tech      1       0         2         4
+Most confused (official -> predicted): [('Business', 'Sci/Tech', np.int64(2)), ('Sci/Tech', 'Business', np.int64(2)), ('Sci/Tech', 'World', np.int64(1))]
+              precision    recall  f1-score   support
+
+       World       0.89      1.00      0.94         8
+      Sports       1.00      1.00      1.00         8
+    Business       0.71      0.71      0.71         7
+    Sci/Tech       0.67      0.57      0.62         7
+
+    accuracy                           0.83        30
+   macro avg       0.82      0.82      0.82        30
+weighted avg       0.83      0.83      0.83        30
+
+============================================================ 
+3. ROWS WHERE I AND PROMPT 1 AGREE BUT OFFICIAL DIFFERS (write-up question 3)
+ id my_label p1_label official_label                                                                                                                                                                                                                                                       text
+  6 Sci/Tech Sci/Tech       Business 5 of arthritis patients in Singapore take Bextra or Celebrex &lt;b&gt;...&lt;/b&gt; SINGAPORE : Doctors in the United States have warned that painkillers Bextra and Celebrex may be linked to major cardiovascular problems and should not be prescribed.
+ 21    World    World       Sci/Tech                                             Old Rumors of Gay Sex Prove Powerful on Web Va. GOP members chose Del. Thelma Drake (Norfolk) to replace Rep. Edward L. Schrock after he resigned amidst allegations Schrock indulged in or solicited gay sex.
+ 22 Business Business       Sci/Tech                                                                                                                      IDC: Software sales to hit \$189 billion The market researcher has predicted a 6.2 percent increase in software revenues during 2004.
+
+============================================================ 
+4. CALIBRATION
+My confidence vs matched official:
+                   mean  count
+my_confidence                 
+High           0.833333     24
+Low            0.000000      1
+Medium         0.600000      5
+
+AI prompt 1 confidence vs matched official:
+                 mean  count
+p1_bin                      
+(0.8, 0.95]  0.428571      7
+(0.95, 1.0]  0.956522     23
+
+============================================================ 
+5. IMBALANCED SET
+Class counts: {'World': 24, 'Sci/Tech': 2, 'Business': 2, 'Sports': 2}
+AI accuracy: 0.8 | kappa: 0.524
+Always-World accuracy: 0.8 | kappa: 0.0
+              precision    recall  f1-score   support
+
+       World       0.95      0.83      0.89        24
+      Sports       1.00      1.00      1.00         2
+    Business       0.33      1.00      0.50         2
+    Sci/Tech       0.00      0.00      0.00         2
+
+    accuracy                           0.80        30
+   macro avg       0.57      0.71      0.60        30
+weighted avg       0.85      0.80      0.81        30
+
+============================================================ 
+6. LEAKAGE WITH TF-IDF + LOGISTIC REGRESSION
+Rows in 'full' that also appear in main or imbalanced: 60
+Demo A, scored on your 30 main items
+  leaky  (30 items inside training data): 1.0
+  honest (those items removed): 0.8
+Demo B, 6000 train rows vs 1600 unseen rows
+  accuracy on the 6000 it trained on: 0.965
+  accuracy on the 1600 it never saw : 0.878

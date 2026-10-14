@@ -1,0 +1,12 @@
+--- empty string (input length 0 characters)
+status: ok | label: World | confidence: 0.0
+raw: {"label":"World","confidence":0.0}
+--- 3000 words of noise (input length 22132 characters)
+status: ok | label: World | confidence: 0.1
+raw: {"label":"World","confidence":0.1}
+--- Hindi headline (input length 47 characters)
+status: ok | label: Sports | confidence: 0.99
+raw: {"label":"Sports","confidence":0.99}
+--- belongs in two categories (input length 63 characters)
+status: ok | label: Business | confidence: 0.92
+raw: {"label":"Business","confidence":0.92}

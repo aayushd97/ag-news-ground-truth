@@ -1,0 +1,12 @@
+--- empty string (input length 0 characters)
+status: empty_input | label: None | confidence: None
+raw: 
+--- 3000 words of noise (input length 22132 characters)
+status: input_too_long | label: None | confidence: None
+raw: 22132 characters, limit is 5000
+--- Hindi headline (input length 47 characters)
+status: ok | label: Sports | confidence: 0.99
+raw: {"label":"Sports","confidence":0.99}
+--- belongs in two categories (input length 63 characters)
+status: ok | label: Business | confidence: 0.92
+raw: {"label":"Business","confidence":0.92}
