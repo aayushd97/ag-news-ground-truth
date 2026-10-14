@@ -1,0 +1,22 @@
+--- 1. PANDAS: items containing 'world' ---
+ id official_label                                                                                                                                                                                                                                                                                             text
+  1         Sports                                                     Gerrard only a 50-50 chance VIENNA - England midfielder Steven Gerrard is a major doubt to face Austria in today #39;s opening 2006 World Cup qualifier. Gerrard has failed to shake off a groin injury suffered in training on Thursday and
+ 16          World                                                Cocoa prices down but Ivorian exports still blocked World cocoa prices were down on Tuesday but off the day #39;s lows as exports remained on hold after mob violence and military clashes in Ivory Coast, the key global supplier, traders said.
+ 17          World China 'Deeply Concerned' at Japan's Defense Move SHANGHAI (Reuters) - China voiced deep concern on Saturday over Japan's sweeping overhaul of defense policy that eased a decades-old ban on arms exports and suggested a shift from a defensive posture in place since its World War II defeat.
+ 20          World                                                          World Population to Rise to 8.9 Billion Although world families are getting smaller in many regions, the 50 poorest countries are expected to triple in size to 1.7 billion people by 2050, posing many challenges for world countries.
+ 29       Business                               Siemens Says Cellphone Flaw May Hurt Users and Its Profit Siemens, the world #39;s fourth-largest maker of mobile phones, said Friday that a software flaw that can create a piercing ring in its newest phone models might hurt earnings in its handset division.
+
+--- 2. SQL: the same filter in DuckDB ---
+ id official_label                                                                                                                                                                                                                                                                                             text
+  1         Sports                                                     Gerrard only a 50-50 chance VIENNA - England midfielder Steven Gerrard is a major doubt to face Austria in today #39;s opening 2006 World Cup qualifier. Gerrard has failed to shake off a groin injury suffered in training on Thursday and
+ 16          World                                                Cocoa prices down but Ivorian exports still blocked World cocoa prices were down on Tuesday but off the day #39;s lows as exports remained on hold after mob violence and military clashes in Ivory Coast, the key global supplier, traders said.
+ 17          World China 'Deeply Concerned' at Japan's Defense Move SHANGHAI (Reuters) - China voiced deep concern on Saturday over Japan's sweeping overhaul of defense policy that eased a decades-old ban on arms exports and suggested a shift from a defensive posture in place since its World War II defeat.
+ 20          World                                                          World Population to Rise to 8.9 Billion Although world families are getting smaller in many regions, the 50 poorest countries are expected to triple in size to 1.7 billion people by 2050, posing many challenges for world countries.
+ 29       Business                               Siemens Says Cellphone Flaw May Hurt Users and Its Profit Siemens, the world #39;s fourth-largest maker of mobile phones, said Friday that a software flaw that can create a piercing ring in its newest phone models might hurt earnings in its handset division.
+
+--- 2b. The group-by from the brief ---
+  official_label  n  avg_chars
+0         Sports  8      242.9
+1          World  8      231.5
+2       Sci/Tech  7      189.6
+3       Business  7      244.3
