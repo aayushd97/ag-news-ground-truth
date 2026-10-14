@@ -1,0 +1,17 @@
+Agreement: 17/30 = 0.567  (95% CI 0.39 to 0.73)
+Kappa: 0.4
+
+Rows = host label, columns = my label
+my_label         Entire home/apt  Hotel room  Private room  Shared room
+room_type                                                              
+Entire home/apt                6           2             2            0
+Hotel room                     2           3             0            0
+Private room                   5           1             4            0
+Shared room                    1           0             0            4
+
+By my confidence:
+                   mean  count
+my_confidence                 
+High           0.631579     19
+Low            1.000000      1
+Medium         0.400000     10
