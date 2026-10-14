@@ -5,6 +5,7 @@ load_dotenv()
 URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "openai/gpt-oss-20b"   
 LABELS = {"World", "Sports", "Business", "Sci/Tech"}
+MAX_CHARS = 5000
 
 PROMPT1 = """You are classifying news items into exactly one of four categories.
 World: international news, politics, conflict, disasters, national affairs
@@ -45,6 +46,11 @@ def call_model(prompt, retries=3):
 
 
 def classify(text, template):
+    if text is None or not str(text).strip():
+        return {"label": None, "confidence": None, "status": "empty_input", "raw": ""}
+    if len(text) > MAX_CHARS:
+        return {"label": None, "confidence": None, "status": "input_too_long",
+                "raw": f"{len(text)} characters, limit is {MAX_CHARS}"}
     r = call_model(template.replace("{text}", text))
     if r.status_code != 200:
         return {"label": None, "confidence": None, "status": f"http_{r.status_code}", "raw": r.text[:200]}
